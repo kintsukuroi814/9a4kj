@@ -3,119 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>9A4KJ - Pro Amateur Radio</title>
+    <title>9A4KJ - Pro Amateur Radio Station</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #000;
             --card-bg: #1c1c1e;
             --text: #f5f5f7;
             --text-dim: #86868b;
-            --accent: #0071e3;
+            --accent: #00ff9d;
+            --accent-glow: rgba(0, 255, 157, 0.3);
         }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background-color: var(--bg);
+            background: var(--bg);
             color: var(--text);
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-            margin: 0;
+            font-family: 'Inter', -apple-system, sans-serif;
             line-height: 1.5;
-            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        header { padding: 120px 0 80px; text-align: center; }
-        h1 { font-size: 80px; font-weight: 600; letter-spacing: -0.015em; margin: 0; background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        p.subtitle { font-size: 28px; color: var(--text-dim); margin-top: 15px; font-weight: 400; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 24px; padding-bottom: 40px; }
-        .card { background: var(--card-bg); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.4s ease; cursor: pointer; }
-        .card:hover { transform: scale(1.02); }
-        .card img { width: 100%; height: 300px; object-fit: cover; }
-        .card-content { padding: 28px; flex-grow: 1; }
-        .card h3 { font-size: 24px; font-weight: 600; margin: 0 0 8px; }
-        .card p { font-size: 17px; color: var(--text-dim); margin: 0; line-height: 1.5; }
-        .badge { display: inline-block; padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; background: rgba(255,255,255,0.1); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
-        .btn { display: inline-block; padding: 12px 24px; border-radius: 980px; background: var(--accent); color: #fff; text-decoration: none; font-weight: 600; font-size: 14px; margin-top: 20px; transition: opacity 0.2s; }
-        .btn:hover { opacity: 0.85; }
-        footer { padding: 100px 0; text-align: center; border-top: 1px solid #333; color: var(--text-dim); font-size: 14px; }
-        #lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 1000; cursor: zoom-out; }
-        #lightbox img { max-width: 90%; max-height: 90%; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        header { text-align: center; margin-bottom: 80px; padding: 100px 0; background: radial-gradient(circle at center, #111 0%, #000 100%); }
+        h1 { font-size: 5rem; font-weight: 600; letter-spacing: -0.05em; margin-bottom: 10px; color: var(--accent); text-shadow: 0 0 30px var(--accent-glow); }
+        .subtitle { font-size: 1.5rem; color: var(--text-dim); font-weight: 300; }
+        
+        section { margin-bottom: 100px; }
+        h2 { font-size: 2rem; margin-bottom: 40px; font-weight: 600; color: var(--text); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
+        
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
+        .card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 32px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .card:hover {
+            transform: scale(1.02);
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+        .card h3 { font-size: 1.4rem; font-weight: 600; }
+        .card p { color: var(--text-dim); font-size: 1rem; }
+        
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+        .gallery-card {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: 24px;
+            overflow: hidden;
+            background: #111;
+            text-decoration: none;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .gallery-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+        .gallery-card:hover img { transform: scale(1.1); }
+        .gallery-card .overlay {
+            position: absolute; inset: 0; padding: 24px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            display: flex; flex-direction: column; justify-content: flex-end;
+            opacity: 0.9; transition: opacity 0.3s;
+        }
+        .gallery-card:hover .overlay { opacity: 1; }
+        .gallery-card .overlay span { font-size: 1.2rem; font-weight: 600; }
+        .gallery-card .overlay p { font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+
+        .pdf-list { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .pdf-item {
+            display: flex; align-items: center; gap: 20px; padding: 24px;
+            background: var(--card-bg); border-radius: 20px; text-decoration: none; color: inherit;
+            border: 1px solid rgba(255,255,255,0.05); transition: 0.3s;
+        }
+        .pdf-item:hover { background: rgba(255,255,255,0.08); border-color: var(--accent); }
+        .pdf-icon { font-size: 1.5rem; background: rgba(255,255,255,0.05); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 12px; }
+        
+        footer { text-align: center; color: var(--text-dim); padding: 80px 0; border-top: 1px solid rgba(255,255,255,0.1); }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .pdf-list { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <div class="badge">9A4KJ Amateur Radio</div>
-            <h1>Pro. Amateur. Radio.</h1>
-            <p class="subtitle">Exploring the HF Spectrum & SDR Engineering</p>
+            <h1>9A4KJ</h1>
+            <p class="subtitle">Amateur Radio Station & Hardware Engineering</p>
         </header>
 
-        <section id="antennas">
+        <section>
+            <h2>📡 Projects & Technical Data</h2>
             <div class="grid">
-                <div class="card" onclick="openLightbox('https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/Antena/Loop_Rab_7.JPG')">
-                    <img src="https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/Antena/Loop_Rab_7.JPG" alt="Magnetic Loop">
-                    <div class="card-content">
-                        <div class="badge">Antenna Systems</div>
-                        <h3>Magnetic Loop Rab</h3>
-                        <p>Experimental high-efficiency loop antenna constructed on Rab Island.</p>
-                    </div>
-                </div>
-                <div class="card" onclick="openLightbox('https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/BALUN/BALUN%20in%20Box%207.jpg')">
-                    <img src="https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/BALUN/BALUN%20in%20Box%207.jpg" alt="BALUN Box">
-                    <div class="card-content">
-                        <div class="badge">Homebrew</div>
-                        <h3>Precision BALUN</h3>
-                        <p>Weatherproof 1:1 BALUN for dipole systems.</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/SDR_ZETA40m/ZETASDR1.JPG" alt="ZETA 40m">
-                    <div class="card-content">
-                        <div class="badge">Engineering</div>
-                        <h3>ZETA 40m SDR</h3>
-                        <p>Custom direct conversion SDR receiver.</p>
-                        <a href="https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/SDR_ZETA40m/partlist.txt" class="btn" target="_blank">View Specs</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/DR2A%2B/DR2A_2.JPG" alt="DR2A+">
-                    <div class="card-content">
-                        <div class="badge">Projects</div>
-                        <h3>DR2A+ Transceiver</h3>
-                        <p>HF transceiver project with documentation.</p>
-                        <a href="https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/DR2A%2B/DR2A%2B_schema.pdf" class="btn" target="_blank">Schematic</a>
-                    </div>
-                </div>
-                <div class="card" onclick="openLightbox('https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/QSL/QSL9a1rab.jpg')">
-                    <img src="https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/QSL/QSL9a1rab.jpg" alt="QSL Card">
-                    <div class="card-content">
-                        <div class="badge">Logbook</div>
-                        <h3>9A1RAB QSL Card</h3>
-                        <p>Official confirmation for island operations.</p>
-                    </div>
-                </div>
-                <div class="card" onclick="openLightbox('https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/Diplome/ARI18.png')">
-                    <img src="https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/Diplome/ARI18.png" alt="ARI Award">
-                    <div class="card-content">
-                        <div class="badge">Award</div>
-                        <h3>ARI 2018 Diploma</h3>
-                        <p>Amateur Radio Association recognition.</p>
-                    </div>
-                </div>
+                <a href="Antenna.htm" class="card"><h3>Antenna Designs</h3><p>Detailed technical analysis of various antenna configurations and testing.</p></a>
+                <a href="Arduino.htm" class="card"><h3>Arduino Lab</h3><p>Microcontroller solutions for automated radio equipment control.</p></a>
+                <a href="sdr.htm" class="card"><h3>SDR Experiments</h3><p>Software Defined Radio implementations and ZETA40m project data.</p></a>
+                <a href="programming.htm" class="card"><h3>Code Repository</h3><p>Programming resources for radio applications in C++, VB, and more.</p></a>
+                <a href="Diplome.htm" class="card"><h3>Award Archive</h3><p>A comprehensive collection of contest diplomas and achievements.</p></a>
+                <a href="electronic.htm" class="card"><h3>Electronics</h3><p>Hardware projects, from keyers to power distribution units.</p></a>
+            </div>
+        </section>
+
+        <section>
+            <h2>📸 Visual Archives</h2>
+            <div class="gallery-grid">
+                <a href="Antena/" class="gallery-card"><img src="Antena/Loop_Rab_7.JPG" alt="Antenna">
+                    <div class="overlay"><span>Antennas</span><p>Antenna construction and field testing</p></div></a>
+                <a href="BALUN/" class="gallery-card"><img src="BALUN/BALUN 1.jpg" alt="BALUN">
+                    <div class="overlay"><span>BALUNs</span><p>Technical hardware builds</p></div></a>
+                <a href="IOTA Rab 2014/" class="gallery-card"><img src="IOTA%20Rab%202014/iotarab1.JPG" alt="IOTA">
+                    <div class="overlay"><span>IOTA Rab</span><p>Expedition photos from 2014</p></div></a>
+                <a href="QSL/" class="gallery-card"><img src="QSL/QSL9a1rab.jpg" alt="QSL">
+                    <div class="overlay"><span>QSL Cards</span><p>Radio contact confirmations</p></div></a>
+                <a href="SDR_LD1a/" class="gallery-card"><img src="SDR_LD1a/LD1a_3.JPG" alt="SDR">
+                    <div class="overlay"><span>SDR LD1a</span><p>SDR hardware integration</p></div></a>
+                <a href="Programatori/" class="gallery-card"><img src="Programatori/TAFE.JPG" alt="Programmer">
+                    <div class="overlay"><span>Programmers</span><p>Programming hardware setups</p></div></a>
+            </div>
+        </section>
+
+        <section>
+            <h2>📄 Technical Documentation</h2>
+            <div class="pdf-list">
+                <a href="DR2A+/DR2A+%20board.pdf" class="pdf-item"><div class="pdf-icon">📄</div><div><strong>DR2A+ Board Schematic</strong><p>Technical layout and board design (PDF)</p></div></a>
+                <a href="Diplome/Rab15wpx.pdf" class="pdf-item"><div class="pdf-icon">🏆</div><div><strong>WPX Diploma 2015</strong><p>WPX Contest Award (PDF)</p></div></a>
+                <a href="Diplome/Rab16wpx.pdf" class="pdf-item"><div class="pdf-icon">🏆</div><div><strong>WPX Diploma 2016</strong><p>WPX Contest Award (PDF)</p></div></a>
+                <a href="SDR_ZETA40m/ZETA40m.doc" class="pdf-item"><div class="pdf-icon">📖</div><div><strong>ZETA 40m SDR</strong><p>Technical documentation (DOC)</p></div></a>
             </div>
         </section>
 
         <footer>
-            <p>&copy; 2026 9A4KJ Station. Designed with Apple Aesthetic.</p>
+            <p>73 de 9A4KJ | Professional Amateur Radio Station</p>
+            <p style="margin-top: 15px; font-size: 0.9rem; color: var(--accent);">Designed by Apple Team Aesthetics</p>
+            <p style="margin-top: 20px; font-size: 0.8rem;">&copy; 2026 kintsukuroi814</p>
         </footer>
     </div>
-
-    <div id="lightbox" onclick="this.style.display='none'">
-        <img id="lightbox-img" src="">
-    </div>
-
-    <script>
-        function openLightbox(url) {
-            document.getElementById('lightbox-img').src = url;
-            document.getElementById('lightbox').style.display = 'flex';
-        }
-    </script>
 </body>
 </html>
