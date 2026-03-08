@@ -3,270 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>9A4KJ - HAM Radio Station</title>
+    <title>9A4KJ - Pro Amateur Radio</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --bg: #000;
+            --card-bg: #1c1c1e;
+            --text: #f5f5f7;
+            --text-dim: #86868b;
+            --accent: #0071e3;
         }
-        
         body {
-            font-family: 'Courier New', monospace;
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
-            color: #00ff88;
-            line-height: 1.6;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            background: rgba(0, 0, 0, 0.5);
-            border-bottom: 3px solid #00ff88;
-            margin-bottom: 30px;
-        }
-        
-        h1 {
-            font-size: 4em;
-            color: #00ff88;
-            text-shadow: 0 0 20px #00ff88, 0 0 30px #00ff88;
-            letter-spacing: 10px;
-            margin-bottom: 10px;
-        }
-        
-        .subtitle {
-            color: #ffa500;
-            font-size: 1.2em;
-            letter-spacing: 3px;
-        }
-        
-        nav {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
-        
-        nav h2 {
-            color: #ffa500;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #ffa500;
-            padding-bottom: 10px;
-        }
-        
-        .nav-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 10px;
-            margin-top: 15px;
-        }
-        
-        nav a {
-            display: block;
-            color: #00ff88;
-            text-decoration: none;
-            padding: 12px 15px;
-            background: rgba(0, 255, 136, 0.1);
-            border: 1px solid #00ff88;
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
-        
-        nav a:hover {
-            background: rgba(0, 255, 136, 0.3);
-            transform: translateX(5px);
-            box-shadow: 0 0 15px #00ff88;
-        }
-        
-        .section {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 25px;
-            margin-bottom: 25px;
-            border-radius: 10px;
-            border: 1px solid #00ff88;
-        }
-        
-        .section h2 {
-            color: #ffa500;
-            margin-bottom: 20px;
-            font-size: 2em;
-            border-bottom: 2px solid #ffa500;
-            padding-bottom: 10px;
-        }
-        
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .gallery-item {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            border: 1px solid #00ff88;
-            border-radius: 5px;
-            text-align: center;
-        }
-        
-        .gallery-item a {
-            color: #00ff88;
-            text-decoration: none;
-            font-size: 0.9em;
-        }
-        
-        .gallery-item a:hover {
-            color: #ffa500;
-        }
-        
-        .doc-list {
-            list-style: none;
-            margin-top: 15px;
-        }
-        
-        .doc-list li {
-            padding: 10px;
-            margin-bottom: 10px;
-            background: rgba(0, 255, 136, 0.1);
-            border-left: 3px solid #00ff88;
-            border-radius: 3px;
-        }
-        
-        .doc-list a {
-            color: #00ff88;
-            text-decoration: none;
-            font-size: 1.1em;
-        }
-        
-        .doc-list a:hover {
-            color: #ffa500;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #00ff88;
-            opacity: 0.7;
-            margin-top: 50px;
-        }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5em;
-                letter-spacing: 5px;
-            }
-            
-            .nav-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { padding: 120px 0 80px; text-align: center; }
+        h1 { font-size: 80px; font-weight: 600; letter-spacing: -0.015em; margin: 0; background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        p.subtitle { font-size: 28px; color: var(--text-dim); margin-top: 15px; font-weight: 400; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 24px; padding-bottom: 40px; }
+        .card { background: var(--card-bg); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.4s ease; cursor: pointer; }
+        .card:hover { transform: scale(1.02); }
+        .card img { width: 100%; height: 300px; object-fit: cover; }
+        .card-content { padding: 28px; flex-grow: 1; }
+        .card h3 { font-size: 24px; font-weight: 600; margin: 0 0 8px; }
+        .card p { font-size: 17px; color: var(--text-dim); margin: 0; line-height: 1.5; }
+        .badge { display: inline-block; padding: 4px 12px; border-radius: 6px; font-size: 12px; font-weight: 600; background: rgba(255,255,255,0.1); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .btn { display: inline-block; padding: 12px 24px; border-radius: 980px; background: var(--accent); color: #fff; text-decoration: none; font-weight: 600; font-size: 14px; margin-top: 20px; transition: opacity 0.2s; }
+        .btn:hover { opacity: 0.85; }
+        footer { padding: 100px 0; text-align: center; border-top: 1px solid #333; color: var(--text-dim); font-size: 14px; }
+        #lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 1000; cursor: zoom-out; }
+        #lightbox img { max-width: 90%; max-height: 90%; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
     </style>
 </head>
 <body>
-    <header>
-        <h1>9A4KJ</h1>
-        <p class="subtitle">Amateur Radio Station - HAM Radio Enthusiast</p>
-    </header>
-
     <div class="container">
-        <!-- Main Navigation -->
-        <nav>
-            <h2>📻 Main Pages</h2>
-            <div class="nav-grid">
-                <a href="Antenna.htm">📡 Antennas</a>
-                <a href="Arduino.htm">🔧 Arduino Projects</a>
-                <a href="C++.htm">💻 C++ Programming</a>
-                <a href="C++2.htm">💻 C++ Advanced</a>
-                <a href="Diplome.htm">🏆 Diplomas & Awards</a>
-                <a href="Electronic keyer.htm">⚡ Electronic Keyer</a>
-                <a href="Favorites.htm">⭐ Favorites</a>
-                <a href="IF10C.htm">🔌 IF10C Project</a>
-                <a href="IOTA RAB 2014.htm">🏝️ IOTA RAB 2014</a>
-                <a href="IOTA RAB 2019.htm">🏝️ IOTA RAB 2019</a>
-                <a href="Iota.htm">🌊 IOTA</a>
-                <a href="Swr.htm">📊 SWR</a>
-                <a href="Trstenik 2006.htm">🏖️ Trstenik 2006</a>
-                <a href="Trstenik 2007.htm">🏖️ Trstenik 2007</a>
-                <a href="Trstenik island.htm">🏝️ Trstenik Island</a>
-                <a href="bascom.htm">⚙️ BASCOM</a>
-                <a href="ddscon.htm">🎛️ DDS Controller</a>
-                <a href="electronic.htm">🔋 Electronics</a>
-                <a href="programming.htm">👨‍💻 Programming</a>
-                <a href="sdr.htm">📻 SDR</a>
-                <a href="visual basic.htm">🖥️ Visual Basic</a>
+        <header>
+            <div class="badge">9A4KJ Amateur Radio</div>
+            <h1>Pro. Amateur. Radio.</h1>
+            <p class="subtitle">Exploring the HF Spectrum & SDR Engineering</p>
+        </header>
+
+        <section id="antennas">
+            <div class="grid">
+                <div class="card" onclick="openLightbox('https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/Antena/Loop_Rab_7.JPG')">
+                    <img src="https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/Antena/Loop_Rab_7.JPG" alt="Magnetic Loop">
+                    <div class="card-content">
+                        <div class="badge">Antenna Systems</div>
+                        <h3>Magnetic Loop Rab</h3>
+                        <p>Experimental high-efficiency loop antenna constructed on Rab Island.</p>
+                    </div>
+                </div>
+                <div class="card" onclick="openLightbox('https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/BALUN/BALUN%20in%20Box%207.jpg')">
+                    <img src="https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/BALUN/BALUN%20in%20Box%207.jpg" alt="BALUN Box">
+                    <div class="card-content">
+                        <div class="badge">Homebrew</div>
+                        <h3>Precision BALUN</h3>
+                        <p>Weatherproof 1:1 BALUN for dipole systems.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/SDR_ZETA40m/ZETASDR1.JPG" alt="ZETA 40m">
+                    <div class="card-content">
+                        <div class="badge">Engineering</div>
+                        <h3>ZETA 40m SDR</h3>
+                        <p>Custom direct conversion SDR receiver.</p>
+                        <a href="https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/SDR_ZETA40m/partlist.txt" class="btn" target="_blank">View Specs</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/DR2A%2B/DR2A_2.JPG" alt="DR2A+">
+                    <div class="card-content">
+                        <div class="badge">Projects</div>
+                        <h3>DR2A+ Transceiver</h3>
+                        <p>HF transceiver project with documentation.</p>
+                        <a href="https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/DR2A%2B/DR2A%2B_schema.pdf" class="btn" target="_blank">Schematic</a>
+                    </div>
+                </div>
+                <div class="card" onclick="openLightbox('https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/QSL/QSL9a1rab.jpg')">
+                    <img src="https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/QSL/QSL9a1rab.jpg" alt="QSL Card">
+                    <div class="card-content">
+                        <div class="badge">Logbook</div>
+                        <h3>9A1RAB QSL Card</h3>
+                        <p>Official confirmation for island operations.</p>
+                    </div>
+                </div>
+                <div class="card" onclick="openLightbox('https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/Diplome/ARI18.png')">
+                    <img src="https://raw.githubusercontent.com/kintsukuroi814/9a4kj/main/Diplome/ARI18.png" alt="ARI Award">
+                    <div class="card-content">
+                        <div class="badge">Award</div>
+                        <h3>ARI 2018 Diploma</h3>
+                        <p>Amateur Radio Association recognition.</p>
+                    </div>
+                </div>
             </div>
-        </nav>
-
-        <!-- Photo Galleries -->
-        <section class="section">
-            <h2>📸 Photo Galleries</h2>
-            <div class="gallery">
-                <div class="gallery-item"><a href="Antena/">📁 Antennas</a></div>
-                <div class="gallery-item"><a href="BALUN/">📁 BALUN</a></div>
-                <div class="gallery-item"><a href="DR2A+/">📁 DR2A+</a></div>
-                <div class="gallery-item"><a href="Diplome/">📁 Diplomas</a></div>
-                <div class="gallery-item"><a href="IOTA Rab 2014/">📁 IOTA Rab 2014</a></div>
-                <div class="gallery-item"><a href="Ljeto2015/">📁 Summer 2015</a></div>
-                <div class="gallery-item"><a href="Programatori/">📁 Programmers</a></div>
-                <div class="gallery-item"><a href="QSL/">📁 QSL Cards</a></div>
-                <div class="gallery-item"><a href="SDR_LD1a/">📁 SDR LD1a</a></div>
-                <div class="gallery-item"><a href="SDR_ZETA40m/">📁 SDR ZETA 40m</a></div>
-                <div class="gallery-item"><a href="STEPER/">📁 Stepper Motor</a></div>
-                <div class="gallery-item"><a href="Spider Beam/">📁 Spider Beam</a></div>
-                <div class="gallery-item"><a href="Unoddslike/">📁 UNO DDS</a></div>
-                <div class="gallery-item"><a href="electronic keyer/">📁 Electronic Keyer</a></div>
-                <div class="gallery-item"><a href="slike 2013/">📁 Photos 2013</a></div>
-                <div class="gallery-item"><a href="slike 2016/">📁 Photos 2016</a></div>
-                <div class="gallery-item"><a href="slike dds 2014/">📁 DDS Photos 2014</a></div>
-            </div>
         </section>
 
-        <!-- PDF Documents -->
-        <section class="section">
-            <h2>📄 Technical Documentation (PDF)</h2>
-            <ul class="doc-list">
-                <li><a href="DR2A+/DR2A+ board.pdf">📘 DR2A+ Board Schematic</a></li>
-                <li><a href="DR2A+/DR2A+_schema.pdf">📘 DR2A+ Schema</a></li>
-                <li><a href="Diplome/Rab15wpx.pdf">🏆 Rab 2015 WPX Diploma</a></li>
-                <li><a href="Diplome/Rab16wpx.pdf">🏆 Rab 2016 WPX Diploma</a></li>
-            </ul>
-        </section>
-
-        <!-- Learning Materials -->
-        <section class="section">
-            <h2>📚 Learning Materials</h2>
-            <ul class="doc-list">
-                <li><a href="SDR_ZETA40m/ZETA40m.doc">📖 ZETA 40m SDR Documentation</a></li>
-                <li><a href="electronic keyer/elkey628.docx">📖 Electronic Keyer Manual</a></li>
-                <li><a href="teorija/">📁 Theory Documents (25 files)</a></li>
-            </ul>
-        </section>
-
-        <!-- About -->
-        <section class="section">
-            <h2>ℹ️ About 9A4KJ</h2>
-            <p style="color: #00ff88; line-height: 1.8;">
-                Welcome to my amateur radio station website. Here you'll find documentation of my HAM radio projects, 
-                antenna designs, SDR experiments, contest participation (including IOTA activities), and various 
-                electronics and programming projects related to amateur radio.
-            </p>
-            <p style="color: #00ff88; line-height: 1.8; margin-top: 15px;">
-                This site includes photo galleries, technical schematics, diplomas from various contests, 
-                and learning materials for those interested in amateur radio and electronics.
-            </p>
-        </section>
+        <footer>
+            <p>&copy; 2026 9A4KJ Station. Designed with Apple Aesthetic.</p>
+        </footer>
     </div>
 
-    <footer>
-        <p>73 de 9A4KJ | HAM Radio Station</p>
-        <p style="font-size: 0.8em; margin-top: 10px;">Last updated: March 2026</p>
-    </footer>
+    <div id="lightbox" onclick="this.style.display='none'">
+        <img id="lightbox-img" src="">
+    </div>
+
+    <script>
+        function openLightbox(url) {
+            document.getElementById('lightbox-img').src = url;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+    </script>
 </body>
 </html>
-
