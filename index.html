@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Davor Kordic - 9A4KJ | Ham Radio</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #475569;
+            --background: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        body {
+            background-color: var(--background);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+        nav {
+            background: var(--card-bg);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        header {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        header p {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        main {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+        section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+        section h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .card {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+        .card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            background: #f1f5f9;
+            min-height: 150px;
+            object-fit: cover;
+        }
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+        }
+        .doc-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f1f5f9;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--primary-dark);
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        footer {
+            background: var(--text-main);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        @media (max-width: 768px) {
+            .nav-container { justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <a href="#" class="logo">9A4KJ</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#dr2a">DR2A+</a></li>
+            <li><a href="#antennas">Antennas</a></li>
+            <li><a href="#iota">IOTA</a></li>
+            <li><a href="#diplomas">Diplomas</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header>
+    <h1>Davor Kordic - 9A4KJ</h1>
+    <p>Amateur Radio Operator · Homebrew Electronics · Contesting</p>
+</header>
+
+<main>
+    <!-- ABOUT -->
+    <section id="about">
+        <h2>About the Station</h2>
+        <p>
+            This site presents the amateur radio activities of Davor Kordic, 9A4KJ.  
+            You will find information about homebrew projects, SDR receivers, antennas, IOTA operations and contest awards.
+        </p>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <h2>Projects &amp; Circuits</h2>
+        <p>
+            Various homebrew projects including an electronic keyer based on the PIC 16F628 microcontroller.  
+            The keyer software is written in assembler and is adapted from the work of DL4YHF.
+        </p>
+
+        <div class="grid">
+            <div class="card">
+                <img src="slike/keyer1.jpg" alt="Electronic keyer project">
+                <p>Homebrew electronic keyer with PIC 16F628.</p>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--secondary);">
+            Documentation
+        </h3>
+        <a href="vrata1VB.doc" class="doc-link">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                </path>
+            </svg>
+            Download vrata1VB.doc
+        </a>
+    </section>
+
+    <!-- DR2A+ PROJECT -->
+    <section id="dr2a">
+        <h2>SDR DR2A+ Receiver</h2>
+        <p>
+            The SDR DR2A+ receiver is one of the main homebrew SDR projects of 9A4KJ,  
+            including the complete board and schematic plus screenshots of the receiver in operation.
+        </p>
+
+        <div class="gallery-grid">
+            <a href="DR2A+/DR2A_3.jpg" class="gallery-item" target="_blank">
+                <img src="DR2A+/DR2A_3.jpg" alt="SDR DR2A+ running on laptop">
+            </a>
+            <a href="DR2A+/DR2A_2.jpg" class="gallery-item" target="_blank">
+                <img src="DR2A+/DR2A_2.jpg" alt="SDR DR2A+ receiver board">
+            </a>
+        </div>
+
+        <h3 style="margin-top:2rem; margin-bottom:1rem; font-size:1.2rem; color:#475569;">
+            Documentation
+        </h3>
+        <ul style="margin-left:1.5rem;">
+            <li><a href="DR2A+/DR2A-board.pdf" target="_blank">DR2A+ PCB board (PDF)</a></li>
+            <li><a href="DR2A+/DR2A-_schema.pdf" target="_blank">DR2A+ schematic (PDF)</a></li>
+        </ul>
+    </section>
+
+    <!-- ANTENNAS -->
+    <section id="antennas">
+        <h2>Antennas</h2>
+        <p>
+            A selection of antennas used on HF, including compact EH designs and portable loop installations.
+        </p>
+
+        <div class="gallery-grid">
+            <a href="Antena/ehant2.jpg" class="gallery-item" target="_blank">
+                <img src="Antena/ehant2.jpg" alt="EH antenna installation">
+            </a>
+            <a href="Antena/Loop_Rab_7.jpg" class="gallery-item" target="_blank">
+                <img src="Antena/Loop_Rab_7.jpg" alt="Loop antenna on Rab">
+            </a>
+        </div>
+    </section>
+
+    <!-- IOTA -->
+    <section id="iota">
+        <h2>IOTA Operations (Islands on the Air)</h2>
+        <p>
+            Photos and memories from IOTA contest operations from Trstenik island and other locations.
+        </p>
+
+        <h3 style="margin-top: 1.5rem; margin-bottom: 1rem; font-size: 1.2rem; color: var(--secondary);">
+            Trstenik Island 2005
+        </h3>
+        <div class="gallery-grid">
+            <a href="slike/agregat.jpg" class="gallery-item" target="_blank">
+                <img src="slike/agregat.jpg" alt="Generator on Trstenik 2005">
+            </a>
+            <a href="slike/Dino%20i%20%20Mato.jpg" class="gallery-item" target="_blank">
+                <img src="slike/Dino%20i%20%20Mato.jpg" alt="Operators on Trstenik 2005">
+            </a>
+            <a href="slike/SeaGain.jpg" class="gallery-item" target="_blank">
+                <img src="slike/SeaGain.jpg" alt="SeaGain antenna Trstenik 2005">
+            </a>
+        </div>
+
+        <h3 style="margin-top: 2rem; margin-bottom: 1rem; font-size: 1.2rem; color: var(--secondary);">
+            Trstenik Island 2006
+        </h3>
+        <div class="gallery-grid">
+            <a href="slike2006/agregat.jpg" class="gallery-item" target="_blank">
+                <img src="slike2006/agregat.jpg" alt="Generator on Trstenik 2006">
+            </a>
+            <a href="slike2006/antena3.jpg" class="gallery-item" target="_blank">
+                <img src="slike2006/antena3.jpg" alt="Antenna 3 Trstenik 2006">
+            </a>
+            <a href="slike2006/antena5.jpg" class="gallery-item" target="_blank">
+                <img src="slike2006/antena5.jpg" alt="Antenna 5 Trstenik 2006">
+            </a>
+            <a href="slike2006/antena9.jpg" class="gallery-item" target="_blank">
+                <img src="slike2006/antena9.jpg" alt="Antenna 9 Trstenik 2006">
+            </a>
+        </div>
+    </section>
+
+    <!-- DIPLOMAS -->
+    <section id="diplomas">
+        <h2>Diplomas &amp; Contest Awards</h2>
+        <p>
+            Selected diplomas and contest certificates earned by 9A4KJ in SWL and amateur radio competitions.
+        </p>
+
+        <div class="gallery-grid">
+            <a href="Diplome/VERON-2012.jpg" class="gallery-item" target="_blank">
+                <img src="Diplome/VERON-2012.jpg" alt="VERON SLP Contest diploma">
+            </a>
+            <a href="Diplome/IOTA_SWL_2010.jpg" class="gallery-item" target="_blank">
+                <img src="Diplome/IOTA_SWL_2010.jpg" alt="IOTA SWL Contest 2010 diploma">
+            </a>
+            <a href="Diplome/RUDX-SWL-2012.jpg" class="gallery-item" target="_blank">
+                <img src="Diplome/RUDX-SWL-2012.jpg" alt="Russian DX Contest SWL diploma">
+            </a>
+            <a href="Diplome/dxcert1.jpg" class="gallery-item" target="_blank">
+                <img src="Diplome/dxcert1.jpg" alt="World Wide DX Contest CW 2013 diploma">
+            </a>
+            <a href="Diplome/ARI18.jpg" class="gallery-item" target="_blank">
+                <img src="Diplome/ARI18.jpg" alt="ARI International DX Contest 2018 diploma">
+            </a>
+        </div>
+
+        <h3 style="margin-top:2rem; margin-bottom:1rem; font-size:1.2rem; color:#475569;">
+            PDF Certificates
+        </h3>
+        <ul style="margin-left:1.5rem;">
+            <li><a href="Diplome/Rab15wpx.pdf" target="_blank">Rab 2015 WPX Contest (PDF)</a></li>
+            <li><a href="Diplome/Rab16wpx.pdf" target="_blank">Rab 2016 WPX Contest (PDF)</a></li>
+        </ul>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 Davor Kordic, 9A4KJ. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,460 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Literatura</title>
+</head>
+
+<body>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b><a href="vrata1VB.doc">NEXT</a></b>
+</p>
+
+<p>Literatura: " Tako lako-Visual Basic 5.0" - Dioniz Daubachy,Znak Zagreb 1998<br>
+<br>
+'Program je izradjen,preveden u Microsoft Visual Basic 6.0&nbsp;<br>
+'Ne koristiti u komercijalne svrhe.&nbsp;<br>
+'Otvoriti treba folder "Adresar" na C:/Adresar da bi program ispravno radio<br>
+'Program se sastoji od formi F_Glavna(Adresar.frm) i uvodne tzv frmsplash(frmsplash.frm)<br>
+'Zahvaljujem Slavku, 9A4YY na savjete i knjizi koju mi je posudio.&nbsp;<br>
+<br>
+_______________________________________________________________________<br>
+<br>
+' frmsplash(frmsplash.frm)<br>
+<br>
+Option Explicit<br>
+Dim s1 As Integer<br>
+Dim s2 As Integer<br>
+'s1 i s2 su varijable koje koristimo za centriranje forme na ekran<br>
+<br>
+<br>
+Private Sub Form_KeyPress(KeyAscii As Integer)<br>
+'zatvori uvodnu formu<br>
+    Unload Me<br>
+'otvori glavnu formu<br>
+F_Glavna.Show<br>
+<br>
+End Sub<br>
+<br>
+Private Sub Form_Load()<br>
+'centriranje forme na ekran<br>
+s1 = Screen.Width: s2 = Screen.Height<br>
+frmSplash.Move (s1 - frmSplash.Width) / 2, (s2 - frmSplash.Height) / 2<br>
+'ispis teksta<br>
+lblLicenseTo.Caption = " Davor Kordic,ing."<br>
+lblCompanyProduct.Alignment = 2<br>
+lblCompanyProduct.Caption = "Visual Basic"<br>
+lblPlatform.Alignment = 2<br>
+lblPlatform.Caption = "Win 95"<br>
+lblVersion.Caption = "Version " &amp; App.Major &amp; "." &amp; App.Minor &amp; "." &amp; App.Revision<br>
+lblProductName.Caption = App.Title<br>
+lblCompany.Caption = " Adresar "<br>
+lblWarning.Caption = "Nekomercijalni program"<br>
+End Sub<br>
+<br>
+Private Sub Frame1_Click()<br>
+'zatvori uvodnu formu<br>
+    Unload Me<br>
+'otvori glavnu formu<br>
+F_Glavna.Show<br>
+End Sub<br>
+_______________________________________________________________________<br>
+<br>
+' F_Glavna(Adresar.frm)<br>
+<br>
+Option Explicit<br>
+Dim podaci$()<br>
+Dim rezerva$()<br>
+Dim ukupno As Integer<br>
+Dim broj As Integer<br>
+Dim indeks As Integer<br>
+Dim savtekst As Integer<br>
+Dim n As Integer<br>
+Dim m As Integer<br>
+Dim a$, b$<br>
+Dim dodavanje As Boolean<br>
+<br>
+Private Sub Bezsnimanja_Click()<br>
+'kraj rada aplikacije<br>
+End<br>
+End Sub<br>
+<br>
+Private Sub CB_Dodaj_Click()<br>
+'promjena gumbi<br>
+CB_Promjeni.Enabled = False<br>
+CB_Obriši.Enabled = False<br>
+'onemogucili smo promjenu i brisanje podataka za vrijeme dodavan<br>
+'provjera moda<br>
+If dodavanje = False Then<br>
+    'brisanje okvira za tekst<br>
+    Call Obrišiokvire<br>
+    'promjena gumbi<br>
+    CB_Dodaj.Enabled = False<br>
+    Tiskanje.Enabled = False<br>
+    'promjena moda<br>
+    dodavanje = True<br>
+    'otvaranje okvira za upis teksta<br>
+    Call Otvoriokvire<br>
+    'postavljanje kursora u prvi okvir<br>
+    TB_Tekst(0).SetFocus<br>
+    Exit Sub<br>
+End If<br>
+'povecavanje rednog broja i rezervne matrice<br>
+broj = ukupno + 1<br>
+ReDim rezerva$(broj, 6)<br>
+'prebacivanje podataka u rezervnu matricu<br>
+For n = 1 To ukupno<br>
+    For m = 1 To 6<br>
+        rezerva$(n, m) = podaci$(n, m)<br>
+    Next m<br>
+Next n<br>
+'Slijedi prebacivanje svih podataka osoba u tako povecanu matricu rezerva$.<br>
+'zapis podataka iz okvira za tekst<br>
+For n = 1 To 6<br>
+    rezerva$(broj, n) = TB_Tekst(n - 1).Text<br>
+Next n<br>
+'Podatke iz svih okvira za tekst zapisujemo kao zadnji podatak matrice,dakle<br>
+'na mjesto koje smo stvorili povecavanjem matrice u prethodnom bloku.<br>
+<br>
+'povecanje ukupnog broja i glavne matrice<br>
+ukupno = ukupno + 1<br>
+ReDim podaci$(broj, 6)<br>
+'vracanje podataka u glavnu matricu<br>
+For n = 1 To ukupno<br>
+    For m = 1 To 6<br>
+        podaci$(n, m) = rezerva$(n, m)<br>
+    Next m<br>
+Next n<br>
+<br>
+'dodavanje imena i prezimena<br>
+LB_Popis.AddItem TB_Tekst(1).Text + "," + TB_Tekst(0).Text<br>
+LB_Popis.ItemData(LB_Popis.NewIndex) = broj<br>
+<br>
+'brisanje sadržaja svih okvira za tekst<br>
+Call Obrišiokvire<br>
+'postavljanje novih vrijednosti<br>
+dodavanje = False<br>
+CB_Dodaj.Enabled = True<br>
+'zatvaranje okvira za upis teksta<br>
+Call Zatvoriokvire<br>
+End Sub<br>
+<br>
+Private Sub CB_Obriši_Click()<br>
+'skidanje podataka sa liste<br>
+LB_Popis.RemoveItem indeks<br>
+'Prvo je potrebno obrisati ime i prezime sa liste.Parametar<br>
+'indeks dobio je svoju vrijednost odabirom podatka na listi i oznacuje<br>
+'redni broj podatka u ispisu.<br>
+'Nakon toga brišem podatke iz  glavne matrice<br>
+For n = 1 To 6<br>
+    podaci$(broj, n) = ""<br>
+Next n<br>
+'brisanje svih okvira za tekst<br>
+Call Obrišiokvire<br>
+'postavljanje gumbi<br>
+CB_Obriši.Enabled = False<br>
+CB_Dodaj.Enabled = True<br>
+'zatvaranje okvira za upis teksta<br>
+Call Zatvoriokvire<br>
+'onemogucavanje tiskanja<br>
+Tiskanje.Enabled = False<br>
+<br>
+End Sub<br>
+<br>
+Private Sub CB_Promjeni_Click()<br>
+'zapis novih podataka nakon promjena podataka u okvirima<br>
+For n = 1 To 6<br>
+    podaci$(broj, n) = TB_Tekst(n - 1).Text<br>
+Next n<br>
+'brisanje svih okvira za tekst<br>
+Call Obrišiokvire<br>
+'onemogucavanje tiskanja<br>
+Tiskanje.Enabled = False<br>
+'promjena gumbi<br>
+CB_Promjeni.Enabled = False<br>
+CB_Dodaj.Enabled = True<br>
+CB_Obriši.Enabled = False<br>
+'zatvaranje okvira za upis teksta<br>
+Call Zatvoriokvire<br>
+End Sub<br>
+<br>
+Private Sub Form_Load()<br>
+'prikaz uvodnog ekrana<br>
+F_Glavna.Hide<br>
+frmSplash.Show<br>
+'centriranje forme na ekran<br>
+n = Screen.Width: m = Screen.Height<br>
+F_Glavna.Move (n - F_Glavna.Width) / 2, (m - F_Glavna.Height) / 2<br>
+'sadržaji kontrola natpisa<br>
+L_Natpis(0) = "Prezime": L_Natpis(1) = "Ime"<br>
+L_Natpis(2) = "Adresa": L_Natpis(3) = "Telefon"<br>
+L_Natpis(4) = "Mobitel": L_Natpis(5) = "Napomene"<br>
+'svojstva kontrola<br>
+F_Glavna.Caption = "Adresa"<br>
+CB_Dodaj.Caption = "Dodavanje"<br>
+CB_Obriši.Caption = "Brisanje"<br>
+CB_Promjeni.Caption = "Promjena"<br>
+<br>
+<br>
+Printer.ScaleMode = 7<br>
+Printer.FontSize = 16<br>
+<br>
+'dodatni savjeti u okviru<br>
+LB_Popis.ToolTipText = "Po abecednom redu"<br>
+TB_Tekst(0).ToolTipText = "Upisati prezime"<br>
+TB_Tekst(1).ToolTipText = "Upisati ime"<br>
+TB_Tekst(2).ToolTipText = "Upisati adresu"<br>
+TB_Tekst(3).ToolTipText = "Upisati broj telefona"<br>
+TB_Tekst(4).ToolTipText = "Upisati broj mobitela"<br>
+TB_Tekst(5).ToolTipText = "Upisati podatke po želji"<br>
+CB_Dodaj.ToolTipText = "Dodavanje  podataka"<br>
+CB_Obriši.ToolTipText = "Brisanje podataka"<br>
+CB_Promjeni.ToolTipText = "Promjena ispisanih podataka"<br>
+'postavljanje pocetnih vrijednosti<br>
+Call Pocetak<br>
+'citanje podataka<br>
+Call Ucitaj<br>
+<br>
+End Sub<br>
+<br>
+Public Sub Pocetak()<br>
+'postavljanje varijabli<br>
+ukupno = 0: broj = 0<br>
+dodavanje = False<br>
+LB_Popis.Clear<br>
+Tiskanje.Enabled = False<br>
+'brisanje sadržaja svih okvira sa tekstom<br>
+Call Obrišiokvire<br>
+'zatvaranje okvira za upis teksta<br>
+Call Zatvoriokvire<br>
+'pocetna svojstva gumbi<br>
+CB_Dodaj.Enabled = True<br>
+CB_Obriši.Enabled = False<br>
+CB_Promjeni.Enabled = False<br>
+<br>
+End Sub<br>
+<br>
+Public Sub Ucitaj()<br>
+'kreiranje datoteke ako ne postoji<br>
+If Dir("C:\Adresar\Adresar.pri", 0) = "" Then<br>
+    Open "C:\Adresar\Adresar.pri" For Output As #1<br>
+    Write #1, 0<br>
+    Close #1<br>
+    ukupno = 0<br>
+End If<br>
+<br>
+'otvori datoteku za citanje podataka<br>
+Open "C:\Adresar\Adresar.pri" For Input As #1<br>
+<br>
+Input #1, ukupno<br>
+'ako nema podataka<br>
+If ukupno = 0 Then<br>
+    Close #1<br>
+    Exit Sub<br>
+End If<br>
+'povecavanje matrica prema broju podataka<br>
+<br>
+ReDim podaci$(ukupno, 6)<br>
+ReDim rezerva$(ukupno, 6)<br>
+'citanje podataka<br>
+<br>
+    For n = 1 To ukupno<br>
+        For m = 1 To 6<br>
+            Input #1, a$<br>
+            podaci$(n, m) = a$<br>
+        Next m<br>
+        LB_Popis.AddItem podaci$(n, 1) + " " + podaci$(n, 2)<br>
+        LB_Popis.ItemData(LB_Popis.NewIndex) = n<br>
+    Next n<br>
+<br>
+<br>
+Close #1<br>
+<br>
+End Sub<br>
+<br>
+Private Sub LB_Popis_Click()<br>
+'brisanje svih okvira za tekst<br>
+Call Obrišiokvire<br>
+'postavljanje varijabli<br>
+broj = LB_Popis.ItemData(LB_Popis.ListIndex)<br>
+indeks = LB_Popis.ListIndex<br>
+dodavanje = False<br>
+'omogucavanje tiskanja<br>
+Tiskanje.Enabled = True<br>
+'ispis podataka odabrane osobe<br>
+For n = 1 To 6<br>
+    TB_Tekst(n - 1).Text = podaci$(broj, n)<br>
+Next n<br>
+'promjena gumbi<br>
+CB_Promjeni.Enabled = True<br>
+CB_Obriši.Enabled = True<br>
+'otvaranje okvira za upis teksta<br>
+Call Otvoriokvire<br>
+End Sub<br>
+<br>
+Private Sub LB_Popis_GotFocus()<br>
+'brisanje svih okvira za tekst<br>
+Call Obrišiokvire<br>
+<br>
+End Sub<br>
+<br>
+Private Sub Otvaranje_Click()<br>
+'postavljanje pocetnih vrijednosti<br>
+Call Pocetak<br>
+'citanje podataka<br>
+Call Ucitaj<br>
+<br>
+End Sub<br>
+<br>
+Private Sub Sasnimanjem_Click()<br>
+'do aktiviranja ovog modula dolazi kad korisnik odabere stavku<br>
+'Sa snimanjem u izborniku Kraj.<br>
+'snimanje podataka u datoteku<br>
+Call Snimi<br>
+'kraj rada aplikacije<br>
+End<br>
+<br>
+End Sub<br>
+<br>
+Private Sub Snimanje_Click()<br>
+'snimanje podataka u datoteku<br>
+Call Snimi<br>
+<br>
+End Sub<br>
+<br>
+Private Sub TB_Tekst_Change(Index As Integer)<br>
+'postoji li ime i prezime<br>
+If TB_Tekst(1).Text = "" Or TB_Tekst(0).Text = "" Then<br>
+    savtekst = 0<br>
+Else<br>
+    savtekst = 1<br>
+End If<br>
+'što ako postoji ili ne postoji<br>
+If savtekst > 0 Then<br>
+    CB_Dodaj.Enabled = True<br>
+Else<br>
+    CB_Dodaj.Enabled = False<br>
+    CB_Promjeni.Enabled = False<br>
+End If<br>
+End Sub<br>
+<br>
+Private Sub TB_Tekst_GotFocus(Index As Integer)<br>
+'promjena boja<br>
+TB_Tekst(Index).BackColor = RGB(0, 128, 128)<br>
+TB_Tekst(Index).ForeColor = RGB(255, 255, 0)<br>
+'podebljanje natpisa<br>
+L_Natpis(Index).FontBold = True<br>
+'postavljanje kursora na pocetak teksta<br>
+TB_Tekst(Index).SelStart = 0<br>
+'ako je odabran okvir sa napomenama<br>
+If Index = 5 Then<br>
+    TB_Tekst(5).SelStart = Len(TB_Tekst(5).Text)<br>
+    Exit Sub<br>
+End If<br>
+'odabir cijelog teksta u okviru<br>
+<br>
+<br>
+End Sub<br>
+<br>
+Private Sub TB_Tekst_LostFocus(Index As Integer)<br>
+'promjena boja<br>
+TB_Tekst(Index).BackColor = RGB(255, 255, 255)<br>
+TB_Tekst(Index).ForeColor = RGB(0, 0, 0)<br>
+'normalni ispis natpisa<br>
+L_Natpis(Index).FontBold = False<br>
+<br>
+End Sub<br>
+<br>
+Public Sub Snimi()<br>
+'prebrojavanje punih zapisa<br>
+indeks = 0<br>
+For n = 1 To ukupno<br>
+    If podaci$(n, 1) &lt;> "" Then<br>
+        indeks = indeks + 1<br>
+    End If<br>
+Next n<br>
+<br>
+'otvaranje datoteke za snimanje podataka<br>
+Open "C:\Adresar\Adresar.pri" For Output As #1<br>
+Write #1, indeks<br>
+<br>
+'Slijedi otvaranje datoteke za zapisivanje podataka.U datoteku odmah upisujemo<br>
+'broj osoba.Ako nema podataka<br>
+If indeks = 0 Then<br>
+    Close #1<br>
+    Exit Sub<br>
+End If<br>
+<br>
+'snimanje podataka<br>
+For n = 1 To ukupno<br>
+    If podaci(n, 1) = "" Then GoTo nastavak<br>
+    For m = 1 To 5<br>
+        a$ = podaci$(n, m)<br>
+        Write #1, a$;<br>
+    Next m<br>
+    Write #1, podaci$(n, 6)<br>
+nastavak:<br>
+Next n<br>
+Close #1<br>
+<br>
+'brisanje okvira za tekst<br>
+Call Obrišiokvire<br>
+'svojstva gumbi<br>
+CB_Obriši.Enabled = False<br>
+CB_Dodaj.Enabled = True<br>
+Tiskanje.Enabled = False<br>
+<br>
+End Sub<br>
+'Nakon snimanja svih podataka slijedi brisanje svih okvira za tekst<br>
+'omogucavanje dodavanja nove osobe te onemogucavanje brisanja i<br>
+'promjene jer ne postoje ispisani podaci koje bi se moglo obrisati ili promjeniti.<br>
+<br>
+Public Sub Obrišiokvire()<br>
+'brisanje sadržaja svih okvira za tekst<br>
+For n = 0 To 5<br>
+    TB_Tekst(n).Text = ""<br>
+Next n<br>
+End Sub<br>
+<br>
+Public Sub Zatvoriokvire()<br>
+'zatvaranje okvira za tekst<br>
+For n = 0 To 5<br>
+    TB_Tekst(n).Enabled = False<br>
+Next n<br>
+<br>
+End Sub<br>
+<br>
+Public Sub Otvoriokvire()<br>
+'otvaranje okvira za tekst<br>
+For n = 0 To 5<br>
+    TB_Tekst(n).Enabled = True<br>
+Next n<br>
+<br>
+End Sub<br>
+<br>
+Private Sub Tiskajosobu_Click()<br>
+'tiskanje praznog reda na pocetku<br>
+Printer.Print ""<br>
+'prvo cemo otisnuti prazan red na papiru.<br>
+'tiskanje natpisa i sadržaja okvira sa tekstom<br>
+For n = 0 To 4<br>
+    a$ = TB_Tekst(n).Text<br>
+    b$ = L_Natpis(n).Caption + ":"<br>
+    Printer.Print Tab(5); b$; Tab(18); a$<br>
+Next n<br>
+'sadržaj okvira sa napomenama se ne tiska radi uštede papira.<br>
+'slanje na tiskanje<br>
+Printer.EndDoc<br>
+'na kraju modula dajemo tiskacu do znanja da smo poslali sve što smo<br>
+'htjeli te da može poceti sa tiskanjem.<br>
+<br>
+End Sub<br>
+<br>
+</p>
+
+</body>
+
+</html>
