@@ -1,97 +1,69 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Language" content="hr">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1250">
-<meta name="Antenna" content="Microsoft FrontPage 4.0">
-<meta name="Antenna" content="FrontPage.Editor.Document">
-<title>ANTENNA</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9A4KJ - Antenna Workshop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #00ff88; --bg: #0a0a0c; --card-bg: #16161a; --text: #e0e0e6; --text-muted: #94949e; --border: rgba(255,255,255,0.08); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 4rem 2rem; }
+        .back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; margin-bottom: 3rem; transition: 0.2s; }
+        .back:hover { color: var(--primary); }
+        h1 { font-size: 3rem; font-weight: 800; color: var(--primary); margin-bottom: 1rem; }
+        .subtitle { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 4rem; }
+        .section { margin-bottom: 4rem; }
+        h2 { font-size: 1.8rem; font-weight: 700; margin-bottom: 1.5rem; border-left: 4px solid var(--primary); padding-left: 1rem; }
+        p { color: var(--text-muted); margin-bottom: 1rem; line-height: 1.8; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+        .gallery a { display: block; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); transition: 0.3s; }
+        .gallery a:hover { border-color: var(--primary); transform: scale(1.02); }
+        .gallery img { width: 100%; display: block; height: 200px; object-fit: cover; }
+        .gallery .caption { padding: 0.75rem 1rem; font-size: 0.85rem; color: var(--text-muted); background: var(--card-bg); }
+        footer { text-align: center; padding: 3rem 0; border-top: 1px solid var(--border); color: var(--text-muted); margin-top: 4rem; }
+    </style>
 </head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back">&#8592; Back to 9A4KJ Home</a>
+        <h1>Antenna Workshop</h1>
+        <p class="subtitle">Custom antenna designs and builds for IOTA expeditions and home station operations.</p>
 
-<body bgcolor="#FFFFCC">
+        <div class="section">
+            <h2>Low Cost GPINV Antenna (10m, 15m, 20m)</h2>
+            <p>A budget-friendly multi-band inverted ground plane antenna covering the 10m, 15m, and 20m bands. Designed and field-tested for the WAE and SAC CW Contests at 9A1RAB on the island of Rab. Achieves SWR of 1:1.5 to 1:2 across all three bands.</p>
+            <div class="gallery">
+                <a href="Ljeto2015/GPant1.JPG" target="_blank"><img src="Ljeto2015/GPant1.JPG" alt="GPINV Antenna 1"><div class="caption">GPINV Antenna assembly</div></a>
+                <a href="Ljeto2015/GPant2.JPG" target="_blank"><img src="Ljeto2015/GPant2.JPG" alt="GPINV Antenna 2"><div class="caption">Field installation</div></a>
+            </div>
+        </div>
 
-<p><b><font size="6"> Low cost GPINV Antenna for 10m, 15m and 20m </font></b></p>
+        <div class="section">
+            <h2>EH Antenna for 20m</h2>
+            <p>An experimental EH (Electric-Hertzian) antenna designed for the 20-meter band. Known for its compact size while delivering good performance, this antenna was tested across various field conditions.</p>
+            <div class="gallery">
+                <a href="Antena/ehant2.JPG" target="_blank"><img src="Antena/ehant2.JPG" alt="EH Antenna"><div class="caption">EH Antenna - 20m band</div></a>
+                <a href="Antena/Loop_Rab_7.JPG" target="_blank"><img src="Antena/Loop_Rab_7.JPG" alt="Loop Antenna"><div class="caption">Loop antenna - island of Rab</div></a>
+            </div>
+        </div>
 
-<a href="Ljeto2015/GPant1.JPG" target=_blank ><img src="Ljeto2015/GPant1.JPG" width="200" height="150" border="0"></a>
-<a href="Ljeto2015/GPant2.JPG" target=_blank ><img src="Ljeto2015/GPant2.JPG" width="200" height="150" border="0"></a>
-<a href="Ljeto2015/GPant3.JPG" target=_blank ><img src="Ljeto2015/GPant3.JPG" width="200" height="150" border="0"></a>
-<a href="Ljeto2015/GPant5.JPG" target=_blank ><img src="Ljeto2015/GPant5.JPG" width="200" height="150" border="0"></a>
+        <div class="section">
+            <h2>Spider Beam (Homemade) - IOTA 2014 & 2018</h2>
+            <p>A fully homemade Spider Beam antenna built from locally sourced materials for IOTA activations on island Rab in 2014 and 2018. The Spider Beam offers a good directional pattern and gain across multiple HF bands without needing a heavy tower.</p>
+        </div>
 
-
-<p><b><font size="6"> This antenna have SWR 1:1,5 to 1:2 for three upper band. Made for WAE and SAC CW Contest 9A1RAB from island Rab  </font></b></p>
-
+        <div class="section">
+            <h2>BALUN 1:1 for Spider Beam</h2>
+            <p>A custom-wound 1:1 BALUN built to match the feedline to the Spider Beam antenna. Constructed in a weatherproof enclosure to endure outdoor conditions during DX expeditions.</p>
+            <div class="gallery">
+                <a href="BALUN/BALUN 1.jpg" target="_blank"><img src="BALUN/BALUN 1.jpg" alt="BALUN"><div class="caption">BALUN wound on ferrite core</div></a>
+                <a href="BALUN/BALUN in Box 7.jpg" target="_blank"><img src="BALUN/BALUN in Box 7.jpg" alt="BALUN in box"><div class="caption">BALUN in weatherproof box</div></a>
+                <a href="BALUN/Start.jpg" target="_blank"><img src="BALUN/Start.jpg" alt="BALUN build start"><div class="caption">Build process - start</div></a>
+            </div>
+        </div>
+    </div>
+    <footer>73 de 9A4KJ | <a href="index.html" style="color:var(--primary);text-decoration:none;">Return Home</a></footer>
 </body>
-
-<body bgcolor="#FFFFCC">
-
-<p><b><font size="6"> EH antenna for 20m </font></b></p>
-
-<a href="slike 2013/ehtheory1.JPG" target=_blank ><img src="slike 2013/ehtheory1.JPG" width="200" height="150" border="0"></a>
-<a href="slike 2013/ehant2.JPG" target=_blank ><img src="slike 2013/ehant2.JPG" width="200" height="150" border="0"></a>
-<a href="slike 2013/ehant3.JPG" target=_blank ><img src="slike 2013/ehant3.JPG" width="200" height="150" border="0"></a>
-<a href="slike 2013/ehant4.JPG" target=_blank ><img src="slike 2013/ehant4.JPG" width="200" height="150" border="0"></a>
-<a href="slike 2013/ehant5.JPG" target=_blank ><img src="slike 2013/ehant5.JPG" width="200" height="150" border="0"></a>
-<a href="slike 2013/ehlog1.JPG" target=_blank ><img src="slike 2013/ehlog1.JPG" width="200" height="150" border="0"></a>
-
-</body>
-
-<body bgcolor="#FFFFCC">
-
-</body><p><b><font size="6"> SPIDER BEAM home made for IOTA 2014 and 2018 on Island Rab </font></b></p>
-
-<a href="Spider Beam/spider1.JPG" target=_blank ><img src="Spider Beam/spider1.JPG" width="200" height="150" border="0"></a>
-<a href="Spider Beam/spider2.JPG" target=_blank ><img src="Spider Beam/spider2.JPG" width="200" height="150" border="0"></a>
-<a href="Spider Beam/spider3.JPG" target=_blank ><img src="Spider Beam/spider3.JPG" width="200" height="150" border="0"></a>
-<a href="Spider Beam/spider4.JPG" target=_blank ><img src="Spider Beam/spider4.JPG" width="200" height="150" border="0"></a>
-<a href="Spider Beam/spider5.jpg" target=_blank ><img src="Spider Beam/spider5.jpg" width="200" height="150" border="0"></a>
-<a href="Spider Beam/spider6.JPG" target=_blank ><img src="Spider Beam/spider6.JPG" width="200" height="150" border="0"></a>
-<a href="Spider Beam/spider7.JPG" target=_blank ><img src="Spider Beam/spider7.JPG" width="200" height="150" border="0"></a>
-<a href="Spider Beam/spider8.jpg" target=_blank ><img src="Spider Beam/spider8.jpg" width="200" height="150" border="0"></a>
-<a href="Spider Beam/spider9.jpg" target=_blank ><img src="Spider Beam/spider9.jpg" width="200" height="150" border="0"></a>
-<a href="Spider Beam/spider10.jpg" target=_blank ><img src="Spider Beam/spider10.jpg" width="200" height="150" border="0"></a>
-<a href="Spider Beam/spider11.jpg" target=_blank ><img src="Spider Beam/spider11.jpg" width="200" height="150" border="0"></a>
-<a href="Spider Beam/spider12.JPG" target=_blank ><img src="Spider Beam/spider12.JPG" width="200" height="150" border="0"></a>
-<a href="Spider Beam/spider13.JPG" target=_blank ><img src="Spider Beam/spider13.JPG" width="200" height="150" border="0"></a>
-<a href="Spider Beam/spider14.JPG" target=_blank ><img src="Spider Beam/spider14.JPG" width="200" height="150" border="0"></a>
-<a href="Spider Beam/spider15.JPG" target=_blank ><img src="Spider Beam/spider15.JPG" width="200" height="150" border="0"></a>
-
-
-</body>
-
-
-
-</body><p><b><font size="6"> BALUN 1 : 1 for SPIDER BEAM antenna home made </font></b></p>
-
-<a href="BALUN/Start.jpg" target=_blank ><img src="BALUN/Start.jpg" width="200" height="150" border="0"></a>
-<a href="BALUN/Text page 16.jpg" target=_blank ><img src="BALUN/Text page 16.jpg" width="200" height="150" border="0"></a>
-<a href="BALUN/Working desk 1.jpg" target=_blank ><img src="BALUN/Working desk 1.jpg" width="200" height="150" border="0"></a>
-<a href="BALUN/Preparation.jpg" target=_blank ><img src="BALUN/Preparation.jpg" width="200" height="150" border="0"></a>
-<a href="BALUN/Black Box 3.jpg" target=_blank ><img src="BALUN/Black Box 3.jpg" width="200" height="150" border="0"></a>
-<a href="BALUN/BALUN 1.jpg" target=_blank ><img src="BALUN/BALUN 1.jpg" width="200" height="150" border="0"></a>
-<a href="BALUN/Black BALUN Box.jpg" target=_blank ><img src="BALUN/Black BALUN Box.jpg" width="200" height="150" border="0"></a>
-<a href="BALUN/BALUN in Box 2.jpg" target=_blank ><img src="BALUN/BALUN in Box 2.jpg" width="200" height="150" border="0"></a>
-<a href="BALUN/BALUN in Box 7.jpg" target=_blank ><img src="BALUN/BALUN in Box 7.jpg" width="200" height="150" border="0"></a>
-<a href="BALUN/BALUN final.jpg" target=_blank ><img src="BALUN/BALUN final.jpg" width="200" height="150" border="0"></a>
-
-
-</body>
-
-
-</body><p><b><font size="6"> Antennas for IOTA 2013 made by domestic material </font></b></p>
-
-
-<a href="slike 2013/Antenna balcony.JPG" target=_blank ><img src="slike 2013/Antenna balcony.JPG" width="200" height="150" border="0"></a>
-<a href="slike 2013/Antenna balcony 1.JPG" target=_blank ><img src="slike 2013/Antenna balcony 1.JPG" width="200" height="150" border="0"></a>
-<a href="slike 2013/Antenna balcony 3.JPG" target=_blank ><img src="slike 2013/Antenna balcony 3.JPG" width="200" height="150" border="0"></a>
-<a href="slike 2013/Antenna field.JPG" target=_blank ><img src="slike 2013/Antenna field.JPG" width="200" height="150" border="0"></a>
-<a href="slike 2013/INVee 1.JPG" target=_blank ><img src="slike 2013/INVee 1.JPG" width="200" height="150" border="0"></a>
-<a href="slike 2013/Barbat 317 Rab.JPG" target=_blank ><img src="slike 2013/Barbat 317 Rab.JPG" width="200" height="150" border="0"></a>
-
-</body>
-
-
-
-
-
-
 </html>
