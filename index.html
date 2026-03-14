@@ -3,147 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>9A4KJ - Pro Amateur Radio Station</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>9A4KJ - Amateur Radio & Hardware Engineering</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #000;
-            --card-bg: #1c1c1e;
-            --text: #f5f5f7;
-            --text-dim: #86868b;
-            --accent: #00ff9d;
-            --accent-glow: rgba(0, 255, 157, 0.3);
+            --primary: #00ff88;
+            --bg: #0a0a0c;
+            --card-bg: #16161a;
+            --text: #e0e0e6;
+            --text-muted: #94949e;
+            --border: rgba(255, 255, 255, 0.08);
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', -apple-system, sans-serif;
-            line-height: 1.5;
+        body { 
+            background: var(--bg); 
+            color: var(--text); 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6;
             overflow-x: hidden;
         }
-        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
-        header { text-align: center; margin-bottom: 80px; padding: 100px 0; background: radial-gradient(circle at center, #111 0%, #000 100%); }
-        h1 { font-size: 5rem; font-weight: 600; letter-spacing: -0.05em; margin-bottom: 10px; color: var(--accent); text-shadow: 0 0 30px var(--accent-glow); }
-        .subtitle { font-size: 1.5rem; color: var(--text-dim); font-weight: 300; }
-        
-        section { margin-bottom: 100px; }
-        h2 { font-size: 2rem; margin-bottom: 40px; font-weight: 600; color: var(--text); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
-        .card {
-            background: var(--card-bg);
-            border-radius: 24px;
-            padding: 32px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            text-decoration: none;
-            color: inherit;
-            border: 1px solid rgba(255,255,255,0.05);
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+        header {
+            height: 100vh;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.05) 0%, transparent 70%);
         }
-        .card:hover {
-            transform: scale(1.02);
-            border-color: var(--accent);
-            background: rgba(255,255,255,0.08);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-        }
-        .card h3 { font-size: 1.4rem; font-weight: 600; }
-        .card p { color: var(--text-dim); font-size: 1rem; }
-        
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
-        .gallery-card {
-            position: relative;
-            aspect-ratio: 1;
-            border-radius: 24px;
-            overflow: hidden;
-            background: #111;
-            text-decoration: none;
-            color: white;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .gallery-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-        .gallery-card:hover img { transform: scale(1.1); }
-        .gallery-card .overlay {
-            position: absolute; inset: 0; padding: 24px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9));
-            display: flex; flex-direction: column; justify-content: flex-end;
-            opacity: 0.9; transition: opacity 0.3s;
-        }
-        .gallery-card:hover .overlay { opacity: 1; }
-        .gallery-card .overlay span { font-size: 1.2rem; font-weight: 600; }
-        .gallery-card .overlay p { font-size: 0.85rem; color: rgba(255,255,255,0.7); }
 
-        .pdf-list { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .pdf-item {
-            display: flex; align-items: center; gap: 20px; padding: 24px;
-            background: var(--card-bg); border-radius: 20px; text-decoration: none; color: inherit;
-            border: 1px solid rgba(255,255,255,0.05); transition: 0.3s;
+        .callsign {
+            font-size: 8rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -2px;
+            line-height: 1;
+            text-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+            margin-bottom: 1rem;
         }
-        .pdf-item:hover { background: rgba(255,255,255,0.08); border-color: var(--accent); }
-        .pdf-icon { font-size: 1.5rem; background: rgba(255,255,255,0.05); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 12px; }
-        
-        footer { text-align: center; color: var(--text-dim); padding: 80px 0; border-top: 1px solid rgba(255,255,255,0.1); }
-        
+
+        .tagline {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 12, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 1rem 0;
+        }
+
+        nav .container { display: flex; justify-content: center; gap: 2rem; }
+        nav a { 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            font-size: 0.9rem; 
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        nav a:hover { color: var(--primary); }
+
+        section { padding: 6rem 0; }
+        h2 { 
+            font-size: 2.5rem; 
+            margin-bottom: 3rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 1rem;
+        }
+        h2::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .card h3 { font-size: 1.5rem; color: var(--primary); }
+        .card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        .footer {
+            padding: 4rem 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
         @media (max-width: 768px) {
-            h1 { font-size: 3rem; }
-            .pdf-list { grid-template-columns: 1fr; }
+            .callsign { font-size: 5rem; }
+            .tagline { font-size: 1.1rem; }
         }
     </style>
 </head>
 <body>
+
+    <header>
+        <div class="callsign">9A4KJ</div>
+        <div class="tagline">Davor Kordic | Amateur Radio Station & Electrical Engineering</div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <a href="#projects">Projects</a>
+            <a href="#archives">Archives</a>
+            <a href="#about">About</a>
+        </div>
+    </nav>
+
     <div class="container">
-        <header>
-            <h1>9A4KJ</h1>
-            <p class="subtitle">Amateur Radio Station & Hardware Engineering</p>
-        </header>
-
-        <section>
-            <h2>📡 Projects & Technical Data</h2>
+        <section id="projects">
+            <h2>📡 Featured Projects</h2>
             <div class="grid">
-                <a href="Antenna.htm" class="card"><h3>Antenna Designs</h3><p>Detailed technical analysis of various antenna configurations and testing.</p></a>
-                <a href="Arduino.htm" class="card"><h3>Arduino Lab</h3><p>Microcontroller solutions for automated radio equipment control.</p></a>
-                <a href="sdr.htm" class="card"><h3>SDR Experiments</h3><p>Software Defined Radio implementations and ZETA40m project data.</p></a>
-                <a href="programming.htm" class="card"><h3>Code Repository</h3><p>Programming resources for radio applications in C++, VB, and more.</p></a>
-                <a href="Diplome.htm" class="card"><h3>Award Archive</h3><p>A comprehensive collection of contest diplomas and achievements.</p></a>
-                <a href="electronic.htm" class="card"><h3>Electronics</h3><p>Hardware projects, from keyers to power distribution units.</p></a>
+                <a href="Antenna.htm" class="card">
+                    <h3>Antenna Workshop</h3>
+                    <p>Detailed technical analysis of Low cost GPINV, EH antennas, and homemade Spider Beams for IOTA expeditions.</p>
+                </a>
+                <a href="Arduino.htm" class="card">
+                    <h3>Arduino Lab</h3>
+                    <p>Microcontroller solutions and automated control systems for modern radio equipment.</p>
+                </a>
+                <a href="sdr.htm" class="card">
+                    <h3>SDR Experiments</h3>
+                    <p>Software Defined Radio implementations, including the ZETA40m project and LD1a hardware integration.</p>
+                </a>
+                <a href="electronic.htm" class="card">
+                    <h3>Electronics</h3>
+                    <p>Hardware builds from scratch: SWR meters, interfaces for Kenwood radios, and DDS controllers.</p>
+                </a>
             </div>
         </section>
 
-        <section>
-            <h2>📸 Visual Archives</h2>
-            <div class="gallery-grid">
-                <a href="Antena/" class="gallery-card"><img src="Antena/Loop_Rab_7.JPG" alt="Antenna">
-                    <div class="overlay"><span>Antennas</span><p>Antenna construction and field testing</p></div></a>
-                <a href="BALUN/" class="gallery-card"><img src="BALUN/BALUN 1.jpg" alt="BALUN">
-                    <div class="overlay"><span>BALUNs</span><p>Technical hardware builds</p></div></a>
-                <a href="IOTA Rab 2014/" class="gallery-card"><img src="IOTA%20Rab%202014/iotarab1.JPG" alt="IOTA">
-                    <div class="overlay"><span>IOTA Rab</span><p>Expedition photos from 2014</p></div></a>
-                <a href="QSL/" class="gallery-card"><img src="QSL/QSL9a1rab.jpg" alt="QSL">
-                    <div class="overlay"><span>QSL Cards</span><p>Radio contact confirmations</p></div></a>
-                <a href="SDR_LD1a/" class="gallery-card"><img src="SDR_LD1a/LD1a_3.JPG" alt="SDR">
-                    <div class="overlay"><span>SDR LD1a</span><p>SDR hardware integration</p></div></a>
-                <a href="Programatori/" class="gallery-card"><img src="Programatori/TAFE.JPG" alt="Programmer">
-                    <div class="overlay"><span>Programmers</span><p>Programming hardware setups</p></div></a>
+        <section id="archives">
+            <h2>📸 Visual & Data Archives</h2>
+            <div class="grid">
+                <a href="Diplome.htm" class="card">
+                    <h3>Award Gallery</h3>
+                    <p>A comprehensive collection of contest diplomas, WPX awards, and radio achievements from over the years.</p>
+                </a>
+                <a href="QSL/" class="card">
+                    <h3>QSL Cards</h3>
+                    <p>Radio contact confirmations and visual history of station communications.</p>
+                </a>
+                <a href="IOTA Rab 2014/" class="card">
+                    <h3>IOTA Rab 2014</h3>
+                    <p>Photo expedition archive from the Island of Rab 2014 ham radio activation.</p>
+                </a>
+                <a href="DR2A+/" class="card">
+                    <h3>Technical Docs</h3>
+                    <p>Access board schematics, layout designs, and detailed PDF documentation for DR2A+ projects.</p>
+                </a>
             </div>
         </section>
-
-        <section>
-            <h2>📄 Technical Documentation</h2>
-            <div class="pdf-list">
-                <a href="DR2A+/DR2A+%20board.pdf" class="pdf-item"><div class="pdf-icon">📄</div><div><strong>DR2A+ Board Schematic</strong><p>Technical layout and board design (PDF)</p></div></a>
-                <a href="Diplome/Rab15wpx.pdf" class="pdf-item"><div class="pdf-icon">🏆</div><div><strong>WPX Diploma 2015</strong><p>WPX Contest Award (PDF)</p></div></a>
-                <a href="Diplome/Rab16wpx.pdf" class="pdf-item"><div class="pdf-icon">🏆</div><div><strong>WPX Diploma 2016</strong><p>WPX Contest Award (PDF)</p></div></a>
-                <a href="SDR_ZETA40m/ZETA40m.doc" class="pdf-item"><div class="pdf-icon">📖</div><div><strong>ZETA 40m SDR</strong><p>Technical documentation (DOC)</p></div></a>
-            </div>
-        </section>
-
-        <footer>
-            <p>73 de 9A4KJ | Professional Amateur Radio Station</p>
-            <p style="margin-top: 15px; font-size: 0.9rem; color: var(--accent);">Designed by Apple Team Aesthetics</p>
-            <p style="margin-top: 20px; font-size: 0.8rem;">&copy; 2026 kintsukuroi814</p>
-        </footer>
     </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>73 de 9A4KJ | Professional Amateur Radio Station</p>
+            <p style="margin-top: 0.5rem;">Dedicated to Davor Kordic - Engineer & Radioamateur</p>
+        </div>
+    </footer>
+
 </body>
 </html>
